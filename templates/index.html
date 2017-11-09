@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <style>
       .number {font-weight: bold;}
+      label, table {font-size: 15px;}
+      input {max-width: 200px;}
     </style>
     <!-- angular module -->
     <script type="text/javascript">
@@ -64,31 +66,32 @@
             <tbody>
               <tr>
                 <td>$1,000</td>
-                <td>{a newAmt(1000) a}</td>
-                <td>{a profit(1000) a}</td>
+                <td>{a newAmt(1000) | currency a}</td>
+                <td>{a profit(1000) | currency a}</td>
               </tr>
               <tr>
                 <td>$5,000</td>
-                <td>{a newAmt(5000) a}</td>
-                <td>{a profit(5000) a}</td>
+                <td>{a newAmt(5000) | currency a}</td>
+                <td>{a profit(5000) | currency a}</td>
               </tr>
               <tr>
                 <td>$10,000</td>
-                <td>{a newAmt(10000) a}</td>
-                <td>{a profit(10000) a}</td>
+                <td>{a newAmt(10000) | currency a}</td>
+                <td>{a profit(10000) | currency a}</td>
               </tr>
               <tr>
                 <td>$25,000</td>
-                <td>{a newAmt(25000) a}</td>
-                <td>{a profit(25000) a}</td>
+                <td>{a newAmt(25000) | currency a}</td>
+                <td>{a profit(25000) | currency a}</td>
               </tr>
               <tr>
                 <td>$50,000</td>
-                <td>{a newAmt(50000) a}</td>
-                <td>{a profit(50000) a}</td>
+                <td>{a newAmt(50000) | currency a}</td>
+                <td>{a profit(50000) | currency a}</td>
               </tr>
             </tbody>
           </table>
+          <span>* If the price of 1 Bitcoin reaches X, THEN your starting investment becomes X AND your profit becomes X.</span>
         </div>
         <div class="col-sm-5">
           <img src="../static/img/btc.png" width="200">
