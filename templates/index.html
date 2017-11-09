@@ -45,7 +45,7 @@
           <br><br>
           <form role="form">
             <label for="starting-investment">Initial Investment (USD)</label>
-            <input type="number" class="form-control">
+            <input type="number" ng-model="initialAmt" class="form-control" placeholder="{a initialAmt a}">
           </form>
           <p>Current Bitcoin Price (USD): {a currRate | currency a}</p>
         </div>
