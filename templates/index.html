@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- define our angular app -->
-<html ng-app>
+<html ng-app="myApp">
   <head>
     <title>Bitcoin Investment Calculator</title>
     <meta charset="utf-8">
@@ -14,6 +14,12 @@
     <style>
       .number {font-weight: bold;}
     </style>
+    <script type="text/javascript">
+        angular.module('myApp', [])
+          .config(function($interpolateProvider) {
+              $interpolateProvider.startSymbol('{a').endSymbol('a}');
+          });
+    </script>
   </head>
   <body>
     <div class="jumbotron">
@@ -23,7 +29,7 @@
       <!-- model -->
       <input type="number" ng-model="somenumber" placeholder="20">
       <br><br>
-      <h4>You have <span class="number">{{ somenumber }}</span> Bitcoins - nice!</h4>
+      <h4>You have <span class="number">{a somenumber a}</span> Bitcoins - nice!</h4>
     </div>
   </body>
 </html>
