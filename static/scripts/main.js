@@ -1,5 +1,5 @@
 
-var bitcoinCalculator = angular.module('bitcoinCalculator', [])
+var bitcoinCalculator = angular.module('bitcoinCalculator', ['nvd3ChartDirectives'])
     .config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('{a').endSymbol('a}');
       });
@@ -21,4 +21,15 @@ var bitcoinCalculator = angular.module('bitcoinCalculator', [])
         return price/$scope.currRate * $scope.initialAmt - $scope.initialAmt;
       };
     });
+    $scope.exampleData = [{
+      "key": "Quantity",
+      "bar": true,
+      "values": [
+        [10, 20],
+        [20, 40],
+        [30, 60],
+        [40, 80],
+        [50, 100]
+      ]
+    }];
   });
