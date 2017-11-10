@@ -21,15 +21,31 @@ var bitcoinCalculator = angular.module('bitcoinCalculator', ['nvd3ChartDirective
         return price/$scope.currRate * $scope.initialAmt - $scope.initialAmt;
       };
     });
-    $scope.exampleData = [{
-      "key": "Quantity",
-      "bar": true,
-      "values": [
-        [10, 20],
-        [20, 40],
-        [30, 60],
-        [40, 80],
-        [50, 100]
-      ]
-    }];
+    $scope.xAxisTickFormatFunction = function(){
+      return function(date){
+        return d3.time.format('%x')(new Date(date));
+      };
+    };
+    
+    $http.get("https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-01-09&end=2017-11-09")
+      .success(function(data){
+        $scope.bitCoinHistory = [];
+        Object.keys(data.bpi).forEach(function(key,index){
+          priceValue = data.bpi[key];
+          dateValue = key;
+          dateValueArray = dateValue.split("-");
+          year = dateValueArray[0];
+          month = dateValueArray[1];
+          day = dateValueArray[2];
+          dateObject = new Date(year,month,day).getTime();
+          dataPair = [dateObject, priceValue];
+          $scope.bitCoinHistory.push(dataPair);
+        });
+        $scope.bitcoinHistoricalData = [{
+          "key": "Prices",
+          "values": $scope.bitCoinHistory
+        }];
+      });
   });
+
+
